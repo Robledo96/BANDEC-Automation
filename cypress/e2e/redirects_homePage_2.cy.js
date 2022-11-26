@@ -1,0 +1,78 @@
+describe('Redirects Home Page - Instituciones Bancariasr', () => {
+    beforeEach(function () {
+        const suite = cy.state('test').parent
+        if (suite.tests.some(test => test.state === 'failed')) {
+            this.skip()
+        }
+    })
+
+    //Page 1
+    it('Visit', () => {
+        cy.visit('/', { timeout: 90000 })
+    })
+
+    it('Checking all redirects - Instituciones Bancariasr', () => {
+        cy.get('.page-header').eq(1)
+            .should('contain', ' Instituciones bancarias')
+        cy.get('li').contains('Banco Central de Cuba')
+            .should('have.attr', 'href').and('include', '/institucion/bancaria/26')
+        cy.get('li').contains('Banco Nacional de Cuba')
+            .should('have.attr', 'href').and('include', '/institucion/bancaria/23')
+        cy.get('li').contains('Banco Popular de Ahorro')
+            .should('have.attr', 'href').and('include', '/institucion/bancaria/22')
+        cy.get('li').contains('Banco de Inversiones S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/bancaria/21')
+    })
+
+    it('Checking all redirects - Instituciones financieras no bancarias', () => {
+        cy.get('.page-header').eq(2)
+            .should('contain', 'Instituciones financieras no bancarias')
+        cy.get('li').contains('ARCAZ S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/31')
+        cy.get('li').contains('Casas de Cambio, S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/27')
+        cy.get('li').contains('Compañía Fiduciaria S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/26')
+        cy.get('li').contains('RAFIN, S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/25')
+        cy.get('li').contains('FIMEL S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/24')
+        cy.get('li').contains('FINTUR S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/22')
+        cy.get('li').contains('Corporación Financiera Habana, S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/20')
+        cy.get('li').contains('FINCIMEX, S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/18')
+        cy.get('li').contains('FINATUR S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/17')
+        cy.get('li').contains('Financiera Iberoamericana S. A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/16')
+        cy.get('li').contains('SERVICIOS DE PAGO RED S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/12')
+        cy.get('li').contains('FINEXIM S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/nobancaria/11')
+    })
+
+    it('Checking all redirects - Oficinas de representación......', () => {
+        cy.get('.page-header').eq(3)
+            .should('contain', 'Oficinas de representación de bancos e instituciones financieras extranjeras')
+        cy.get('li').contains('FINCOMEX LTD.')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/19')
+        cy.get('li').contains('Novafin Financiere S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/18')
+        cy.get('li').contains('Havin Bank Ltd.')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/16')
+        cy.get('li').contains('National Bank of Canada')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/15')
+        cy.get('li').contains('Banco Bilbao Vizcaya Argentaria S. A.')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/14')
+        cy.get('li').contains('Banco Sabadell S.A.')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/12')
+        cy.get('li').contains('FRANSABANK SAL')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/11')
+        cy.get('li').contains('Republic Bank Limited')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/10')
+        cy.get('li').contains('BPCE INTERNATIONAL ET OUTRE-MER')
+            .should('have.attr', 'href').and('include', '/institucion/oficina/8')
+    })
+})
